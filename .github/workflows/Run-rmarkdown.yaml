@@ -19,6 +19,7 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Create and setup .Renviron file
         run: |
+          touch .Renviron
           echo REPO_PAT="$REPO_PAT" >> ~/.Renviron
           shell: bash
       - name: Run run_rmd_file.R
