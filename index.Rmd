@@ -12,7 +12,9 @@ library(httr)
 library(dplyr)
 if(Sys.info()["user"] == 'matt'){
    source('./secrets.R') ## testing only
-} 
+} else {
+   Sys.getenv('REPO_PAT')
+}
 ```
 
 ## Intent
