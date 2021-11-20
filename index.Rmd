@@ -1,0 +1,53 @@
+---
+title: "Test github actions, environments and PATs"
+author: "Matt Leary"
+date: "11/13/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE, warning=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(httr)
+library(dplyr)
+if(Sys.info()["user"] == 'matt'){
+   source('./secrets.R')
+}
+```
+
+## Intent
+
+Test ability to access data from a mix of public and private github repos and then
+share the results via a github page generated via a cron job on github actions.
+
+This might lead to something else, but really using this as a chance to learn
+more about github actions, workflows, and environments. 
+## Getting data
+
+```{r}
+df.public <- read.csv('https://raw.githubusercontent.com/mleary/test-data/main/data.csv')
+
+private.repo <- httr::content(httr::GET(
+  "https://api.github.com/repos/mleary/test/contents/data.csv",
+  add_headers(Authorization = paste("token", REPO_PAT))
+), as = "parsed")
+
+df.private <- read.csv(private.repo$download_url)
+```
+
+## Displaying data
+
+#### Public repo
+
+```{r}
+df.public
+```
+
+
+#### Private repo
+
+```{r}
+df.private
+```
+
+
