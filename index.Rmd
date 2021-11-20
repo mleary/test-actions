@@ -45,7 +45,6 @@ df.private <- read.csv(private.repo$download_url)
 df.public
 ```
 
-
 #### Private repo
 
 ```{r}
