@@ -19,8 +19,7 @@ jobs:
       - uses: r-lib/actions/setup-pandoc@v1
       - name: Create and setup .Renviron file
         run: |
-          echo MY_SECRET="$MY_SECRET" >> ~/.Renviron
-          echo MY_SECRET2="$MY_SECRET2" >> ~/.Renviron
+          echo REPO_PAT="$REPO_PAT" >> ~/.Renviron
           shell: bash
       - name: Run run_rmd_file.R
         run: Rscript ./scripts/run_rmd_file.R
