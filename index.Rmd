@@ -11,8 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 library(httr)
 library(dplyr)
 if(Sys.info()["user"] == 'matt'){
-   source('./secrets.R')
-}
+   source('./secrets.R') ## testing only
+} 
 ```
 
 ## Intent
@@ -25,6 +25,8 @@ more about github actions, workflows, and environments.
 ## Getting data
 
 ```{r}
+
+
 df.public <- read.csv('https://raw.githubusercontent.com/mleary/test-data/main/data.csv')
 
 private.repo <- httr::content(httr::GET(
