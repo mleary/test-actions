@@ -1,0 +1,12 @@
+{
+  "library": "/home/matt/Documents/test-actions/.checkpoint/2021-11-01/lib/x86_64-pc-linux-gnu/4.0.5",
+  "cache_dir": "/tmp/RtmpZqxQI9/file55b341f56c45",
+  "package_cache_dir": null,
+  "metadata_cache_dir": "/tmp/RtmpZqxQI9/file55b31aac2f1a",
+  "platforms": "source",
+  "cran-mirror": "https://mran.microsoft.com/snapshot/2021-11-01",
+  "dependencies": ["Depends", "Imports", "LinkingTo"],
+  "r-versions": "4.0.5",
+  "build-vignettes": false,
+  "metadata-update-after": 24
+}

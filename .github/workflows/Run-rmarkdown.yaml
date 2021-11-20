@@ -1,0 +1,33 @@
+# Workflow derived from https://github.com/r-lib/actions/tree/master/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
+on:
+  push:
+    branches: [main]
+
+
+name: Run-rmarkdown
+
+jobs:
+  Run-rmarkdown:
+    runs-on: ubuntu-latest
+    env:
+      workflow: ${{ secrets.REPO_PAT }}
+      R_KEEP_PKG_SOURCE: yes
+    steps:
+      - uses: actions/checkout@v2
+      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-pandoc@v1
+      - name: Run run_rmd_file.R
+        run: Rscript ./scripts/run_rmd_file.R
+      - name: commit rendered README
+        run: |
+          git config --local user.name github-actions
+          git config --local user.email "actions@github.com"
+          git add index.html 
+          git commit -m "Re-build index.html"
+          git push origin main 
+        env:
+          REPO_KEY: ${{secrets.GITHUB_TOKEN}}
+          username: github-actions
+
+
