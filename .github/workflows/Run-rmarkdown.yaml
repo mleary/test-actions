@@ -21,6 +21,8 @@ jobs:
         run: |
           echo REPO_PAT="$REPO_PAT" >> ~/.Renviron
           shell: bash
+        env:
+          REPO_PAT: ${{ secrets.REPO_PAT }}
       - name: Run run_rmd_file.R
         run: Rscript ./scripts/run_rmd_file.R
       - name: commit rendered README
