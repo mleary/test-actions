@@ -175,7 +175,14 @@ pre code {
 <div id="intent" class="section level2">
 <h2>Intent</h2>
 <p>Test ability to access data from a mix of public and private github repos and then share the results via a github page generated via a cron job on github actions.</p>
-<p>This might lead to something else, but really using this as a chance to learn more about github actions, workflows, and environments. ## Getting data</p>
+<p>This might lead to something else, but really using this as a chance to learn more about github actions, workflows, and environments.</p>
+</div>
+<div id="getting-pat" class="section level2">
+<h2>Getting PAT</h2>
+<pre class="r"><code>REPO_PAT &lt;- Sys.getenv(&quot;REPO_PAT&quot;)</code></pre>
+</div>
+<div id="getting-data" class="section level2">
+<h2>Getting data</h2>
 <pre class="r"><code>df.public &lt;- read.csv(&#39;https://raw.githubusercontent.com/mleary/test-data/main/data.csv&#39;)
 
 private.repo &lt;- httr::content(httr::GET(

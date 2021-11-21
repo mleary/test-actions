@@ -10,11 +10,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 library(httr)
 library(dplyr)
-if(Sys.info()["user"] == 'matt'){
-   source('./secrets.R') ## testing only
-} else {
-   Sys.getenv('REPO_PAT')
-}
+
 ```
 
 ## Intent
@@ -24,6 +20,13 @@ share the results via a github page generated via a cron job on github actions.
 
 This might lead to something else, but really using this as a chance to learn
 more about github actions, workflows, and environments. 
+
+## Getting PAT 
+
+```{r}
+REPO_PAT <- Sys.getenv("REPO_PAT")
+```
+
 ## Getting data
 
 ```{r}
